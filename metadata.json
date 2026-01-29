@@ -1,0 +1,5 @@
+{
+  "name": "Contract Extractor AI",
+  "description": "Extract data from PDF training contracts and export to Excel using Gemini 2.5 Flash.",
+  "requestFramePermissions": []
+}
