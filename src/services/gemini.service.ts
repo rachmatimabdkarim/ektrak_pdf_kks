@@ -129,7 +129,7 @@ export class GeminiService {
         totalBiayaPelatihanPM: { type: Type.STRING, description: "TOTAL Biaya pelatihan yang dibayarkan (Cari di Pasal 5 - Tabel Paling Bawah/Kanan)." },
 
         // Keuangan Umum (CRITICAL ACCURACY)
-        setoranKasNegara: { type: Type.STRING, description: "Nominal di Pasal 5 Pembiayaan, kalimat '...disetorkan ke kas negara sebesar...'" },
+        setoranKasNegara: { type: Type.STRING, description: "KHUSUS TIPE KODING. Nominal di Pasal 5 Pembiayaan, kalimat '...disetorkan ke kas negara sebesar...'. Jika tipe PM, biarkan kosong." },
         rekeningNomor: { type: Type.STRING, description: "Nomor Rekening Tujuan. Ekstrak HANYA ANGKA digit rekeningnya. Cek Pasal 6." },
         rekeningNama: { type: Type.STRING, description: "Nama Pemilik Rekening (Account Holder Name). Ambil string lengkap setelah 'atas nama' atau 'a.n'. Jangan disingkat. Cek Pasal 6." },
         rekeningBank: { type: Type.STRING, description: "Nama Bank (Contoh: BNI, BRI, Bank Mandiri). Cek Pasal 6." },
@@ -175,8 +175,9 @@ export class GeminiService {
          - **TIPE 'PM'**: Jika judul mengandung "Pembelajaran Mendalam" atau ada tabel biaya terpisah Guru vs Kepsek.
            - Biaya Guru: Ambil biaya **SATUAN (PER ORANG)**. Jangan ambil total perkalian.
            - Total Biaya Pelatihan PM: Ambil angka Grand Total dari tabel biaya.
+           - **Setoran Kas Negara**: UNTUK PM TIDAK ADA. Biarkan kosong string "".
          - **TIPE 'KODING'**: Jika judul "Koding dan Kecerdasan Artifisial".
-         - **Setoran Kas Negara**: Cari di Pasal 5, kalimat "...disetorkan ke kas negara sebesar...". Ambil nominal Rupiahnya.
+           - **Setoran Kas Negara**: Cari di Pasal 5, kalimat "...disetorkan ke kas negara sebesar...". Ambil nominal Rupiahnya.
 
       5. **KONTAK (HP & EMAIL)**:
          - Wajib cari di **Pasal 12** atau pasal berjudul **"PEMBERITAHUAN"**.
